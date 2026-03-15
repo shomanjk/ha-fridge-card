@@ -1,0 +1,11 @@
+node_modules/
+preview-dev.log
+.devcontainer.json
+build.mjs
+docker-compose.yml
+package.json
+package-lock.json
+tsconfig.json
+src/
+preview/
+config/
