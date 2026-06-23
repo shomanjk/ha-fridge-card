@@ -557,7 +557,7 @@ var CARD_TYPE = "ha-fridge-card";
 var INVALID_STATES = /* @__PURE__ */ new Set(["unknown", "unavailable", "none"]);
 var VIEWBOX_WIDTH = 192;
 var VIEWBOX_HEIGHT = 387;
-var LAYOUTS = ["default", "freezer", "inverted", "dual_door"];
+var LAYOUTS = ["default", "freezer", "inverted", "dual_door", "side_by_side"];
 var LAYOUT_ZONES = {
   default: {
     freezer: { x: 10, y: 8, width: 172, height: 108 },
@@ -573,6 +573,10 @@ var LAYOUT_ZONES = {
   dual_door: {
     freezer: { x: 10, y: 269, width: 172, height: 108 },
     fridge: { x: 10, y: 8, width: 172, height: 253 }
+  },
+  side_by_side: {
+    freezer: { x: 10, y: 8, width: 84, height: 371 },
+    fridge: { x: 98, y: 8, width: 84, height: 371 }
   }
 };
 var FRIDGE_SVGS = {
@@ -625,6 +629,18 @@ var FRIDGE_SVGS = {
       <rect x="10" y="269" width="172" height="108" rx="10" stroke="#D1D8E0" stroke-width="1" />
       <rect x="26" y="299" width="6" height="48" rx="3" fill="#B8C2CC" />
     </svg>
+  `,
+  side_by_side: b2`
+    <svg class="fridge-svg" viewBox="0 0 192 387" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="4" y="4" width="184" height="379" rx="14" fill="#E8ECF0" stroke="#C4CDD6" stroke-width="1.5" />
+      <rect x="10" y="8" width="84" height="371" rx="10" fill="#F4F6F8" />
+      <rect x="10" y="8" width="84" height="371" rx="10" stroke="#D1D8E0" stroke-width="1" />
+      <rect x="82" y="140" width="6" height="70" rx="3" fill="#B8C2CC" />
+      <line x1="96" y1="8" x2="96" y2="379" stroke="#BCC5CF" stroke-width="1.5" />
+      <rect x="98" y="8" width="84" height="371" rx="10" fill="#F7F9FB" />
+      <rect x="98" y="8" width="84" height="371" rx="10" stroke="#D1D8E0" stroke-width="1" />
+      <rect x="104" y="140" width="6" height="70" rx="3" fill="#B8C2CC" />
+    </svg>
   `
 };
 var HaFridgeCard = class extends i4 {
@@ -641,6 +657,7 @@ var HaFridgeCard = class extends i4 {
                 { value: "default", label: "Freezer on top" },
                 { value: "inverted", label: "Fridge on top" },
                 { value: "dual_door", label: "French door" },
+                { value: "side_by_side", label: "Side by side" },
                 { value: "freezer", label: "Freezer only" }
               ]
             }
